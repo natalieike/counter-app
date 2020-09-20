@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import Counter from "./counter";
+import React, { Component } from 'react'
+import Counter from './counter'
+import Totals from './totals'
 
 class Counters extends Component {
   render() {
@@ -9,25 +10,27 @@ class Counters extends Component {
       onDelete,
       onDecrement,
       counters,
-      onRestart
-    } = this.props;
+      onRestart,
+      onSetCheckout,
+    } = this.props
+
     return (
       <div>
         <button
           className="btn btn-success m-2"
           onClick={onReset}
-          disabled={counters.length === 0 ? "disabled" : ""}
+          disabled={counters.length === 0 ? 'disabled' : ''}
         >
           <i className="fa fa-refresh" aria-hidden="true" />
         </button>
         <button
           className="btn btn-primary m-2"
           onClick={onRestart}
-          disabled={counters.length !== 0 ? "disabled" : ""}
+          disabled={counters.length !== 0 ? 'disabled' : ''}
         >
           <i className="fa fa-recycle" aria-hidden="true" />
         </button>
-        {counters.map(counter => (
+        {counters.map((counter) => (
           <Counter
             key={counter.id}
             counter={counter}
@@ -36,9 +39,17 @@ class Counters extends Component {
             onDelete={onDelete}
           />
         ))}
+        <hr />
+        <div>
+          <Totals
+            counters={counters}
+            checkoutButton={true}
+            onSetCheckout={onSetCheckout}
+          />
+        </div>
       </div>
-    );
+    )
   }
 }
 
-export default Counters;
+export default Counters
