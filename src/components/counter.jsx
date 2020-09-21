@@ -24,12 +24,14 @@ class Counter extends Component {
           </div>
           <div className="col-md-4">
             <button
+              datatestid="btn-increment"
               className="btn btn-secondary"
               onClick={() => this.props.onIncrement(this.props.counter)}
             >
               <i className="fa fa-plus-circle" aria-hidden="true" />
             </button>
             <button
+              datatestid="btn-decrement"
               className="btn btn-info m-2"
               onClick={() => this.props.onDecrement(this.props.counter)}
               disabled={this.props.counter.value === 0 ? 'disabled' : ''}
